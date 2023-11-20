@@ -14,12 +14,14 @@ public class MainApplication {
                     {23, 42, 27, 6},
                     {13, 22, 14, 13},
                     {33, 5, 57, 19}};
-        solveFSP(arr);
+        for(int i=0;i<20;i++){
+            solveFSP(arr);
+        }
     }
 
     public static void solveFSP(int[][]ancestor){
         final int populationSize = 20;//种群染色体数量
-        final int GenerationSize = 50;//迭代次数
+        final int GenerationSize = 20;//迭代次数
         final double Cross_RATE = 0.6;//交叉率
         final double Mutation_RATE = 0.1;//变异率
         //遗传算子
@@ -34,7 +36,7 @@ public class MainApplication {
         ArrayList<int[][]> pop = initPopulation;
         //TODO：迭代开始->
         for (int i =0;i<GenerationSize;i++){
-            System.out.println("开始第"+(i+1)+"代->");
+//            System.out.println("开始第"+(i+1)+"代->");
             //临时数组，存放当前种群每个染色体的目标值，即完工时间
             ArrayList<int[][]> tempPop = new ArrayList<>();
             int[] popValue = new int[populationSize];
@@ -49,7 +51,7 @@ public class MainApplication {
             //记录当前种群中最优染色体
             int[][] curr_bestChrome = pop.get(index);
             generation_Best_Chrome.add(curr_bestChrome);
-            Utils.print(curr_bestChrome);
+//            Utils.print(curr_bestChrome);
             //TODO：遗传操作
             //保留一个精英-淘汰机制
             tempPop.add(curr_bestChrome);
@@ -83,5 +85,6 @@ public class MainApplication {
         for (int a:bestValue) {
             System.out.print(a+" ");
         }
+        System.out.println();
     }
 }
